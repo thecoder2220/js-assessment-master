@@ -1,29 +1,18 @@
 describe('closure', function() {
 
-  // Une fonction peut être définie ainsi :
-  function UneFonction () {
-    it("Je suis une fonction");
+  let arr=["elem1e","elem2","elem3","elem4","elem5",];
+
+  for (let i = 0; i<arr.length;i++) {
+    window.setTimeout(
+      (function (arg1) {
+
+          return function () {
+            it(arr[arg1]);
+          };
+
+        }
+      )(i),1000
+    );
   }
-
-  UneFonction(); // affiche "Je suis une fonction"
-
-// mais on peut aussi la définir ainsi :
-// (On affecte en fait une fonction anonyme à une variable)
-  var UneAutreFonction = function () {
-    it("Je suis une autre fonction");
-  };
-
-  UneAutreFonction(); // affiche "Je suis une autre fonction"
-
-// Une fonction étant une variable, on peut lui réaffecter une valeur :
-  UneFonction = "Je ne suis plus une fonction :'(";
-
-  it(UneFonction); // affiche "Je ne suis plus une fonction :'("
-
-// On peut passer une fonction comme argument à une autre fonction (comme n'importe quelle autre variable)
-  function UtiliserFonction (fct) {
-    fct(); // ici, on exécute la fonction passée en paramètre
-  }
-
-  UtiliserFonction(UneAutreFonction); // affiche "Je suis une autre fonction"
 });
+
